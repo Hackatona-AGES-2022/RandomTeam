@@ -13,7 +13,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -30,7 +29,7 @@ class _LoginState extends State<Login> {
           child: Column(
             children: [
               _createBanner(width, height),
-              //_createBody(width, height, context),
+              _createBody(width, height, context),
             ],
           )),
     );
@@ -41,80 +40,115 @@ class _LoginState extends State<Login> {
         width: width,
         height: height,
         child: Center(
-            child: Image.asset(
-              AppStrings.images.logo,
-            ),
+          child: Image.asset(
+            AppStrings.images.logo,
+          ),
         ));
   }
 
-  // Widget _createBody(double width, double height, context) {
-  //   return Container(
-  //       padding: const EdgeInsets.all(20),
-  //       width: width,
-  //       height: height,
-  //       child: Center(
-  //         child: Column(
-  //           children: [
-  //             TextField(
-  //               keyboardType: TextInputType.number,
-  //               inputFormatters: <TextInputFormatter>[
-  //                 FilteringTextInputFormatter.digitsOnly
-  //               ], // O
-  //               maxLength: 8,
-  //               decoration:
-  //                   _customTextFieldDecoration(placeholder: 'Matrícula'),
-  //               controller: registrationController,
-  //             ),
-  //             SizedBox(height: 16.0),
-  //             sendButton(context),
-  //           ],
-  //         ),
-  //       ));
-  // }
+  Widget _createBody(double width, double height, context) {
+    return Container(
+        padding: const EdgeInsets.all(20),
+        width: width,
+        height: height,
+        child: Center(
+          child: Column(
+            children: [
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                maxLength: 45,
+                decoration: _customTextFieldDecoration(placeholder: 'E-mail'),
+                //controller: registrationController,
+              ),
+              SizedBox(height: 16.0),
+              TextField(
+                keyboardType: TextInputType.visiblePassword,
+                maxLength: 45,
+                decoration: _customTextFieldDecoration(
+                    placeholder: 'Senha'), //Hide password
+                //controller: registrationController,
+              ),
+              SizedBox(height: 16.0),
+              sendButton(context),
+              SizedBox(height: 16.0),
+              registerButton(context),
+            ],
+          ),
+        ));
+  }
 
-  // InputDecoration _customTextFieldDecoration(
-  //     {required String placeholder, isCollapsed = true}) {
-  //   return InputDecoration(
-  //       hintText: placeholder,
-  //       filled: true,
-  //       fillColor: Colors.white,
-  //       counterText: "",
-  //       border: OutlineInputBorder(
-  //           borderRadius: BorderRadius.circular(40.0),
-  //           borderSide: BorderSide.none),
-  //       isCollapsed: isCollapsed,
-  //       contentPadding:
-  //           const EdgeInsets.symmetric(vertical: 14, horizontal: 20));
-  // }
+  InputDecoration _customTextFieldDecoration(
+      {required String placeholder, isCollapsed = true}) {
+    return InputDecoration(
+        hintText: placeholder,
+        filled: true,
+        fillColor: Colors.white,
+        counterText: "",
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(40.0),
+            borderSide: BorderSide.none),
+        isCollapsed: isCollapsed,
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 14, horizontal: 20));
+  }
 
-  // Widget sendButton(context) {
-  //   return TextButton(
-  //       onPressed: () {
-  //         String registration = registrationController.value.text;
-  //         if (registration.length == 8 && registration.isNotEmpty) {
-  //           loginController.login(registration, (bool success) {
-  //             if (success) {
-  //               Navigator.of(context).popAndPushNamed(Routes.home);
-  //             } else {
-  //               onIncorrect(context);
-  //             }
-  //           });
-  //         } else {
-  //           badInput(context);
-  //         }
-  //       },
-  //       child: Text(
-  //         AppStrings.connect,
-  //         style: TextStyle(color: Colors.white, fontSize: 16),
-  //       ),
-  //       style: TextButton.styleFrom(
-  //         minimumSize: Size(200, 48),
-  //         padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-  //         backgroundColor: AppColors.moderateCyan,
-  //         shape:
-  //             RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-  //       ));
-  // }
+  Widget sendButton(context) {
+    return TextButton(
+        onPressed: () {
+          //String registration = registrationController.value.text;
+          //if (registration.length == 8 && registration.isNotEmpty) {
+          // loginController.login(registration, (bool success) {
+          //if (success) {
+          //  Navigator.of(context).popAndPushNamed(Routes.home);
+          // } else {
+          //  onIncorrect(context);
+          // }
+          // });
+          // } else {
+          //badInput(context);
+          //}
+        },
+        child: Text(
+          AppStrings.connect,
+          style: TextStyle(color: Colors.white, fontSize: 16),
+        ),
+        style: TextButton.styleFrom(
+          minimumSize: Size(200, 48),
+          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          backgroundColor: Colors.green,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        ));
+  }
+
+  Widget registerButton(context) {
+    return TextButton(
+        onPressed: () {
+          //String registration = registrationController.value.text;
+          //if (registration.length == 8 && registration.isNotEmpty) {
+          // loginController.login(registration, (bool success) {
+          //if (success) {
+          //  Navigator.of(context).popAndPushNamed(Routes.home);
+          // } else {
+          //  onIncorrect(context);
+          // }
+          // });
+          // } else {
+          //badInput(context);
+          //}
+        },
+        child: Text(
+          AppStrings.register,
+          style: TextStyle(color: Colors.white, fontSize: 16),
+        ),
+        style: TextButton.styleFrom(
+          minimumSize: Size(200, 48),
+          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          backgroundColor: Colors.green,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        ));
+  }
 
   // void onIncorrect(context) {
   //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(

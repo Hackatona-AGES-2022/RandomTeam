@@ -27,6 +27,7 @@ class AppStrings {
   static String seeMore = "Ver mais";
   static String loading = "Carregando";
   static String connect = "Conectar";
+  static String register = "Cadastrar";
 
   /*  ===============
   *   Button Strings
