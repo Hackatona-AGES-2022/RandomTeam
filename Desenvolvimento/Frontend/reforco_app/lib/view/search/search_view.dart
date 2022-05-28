@@ -1,7 +1,6 @@
 import 'package:reforco_app/components/glass.dart';
 import 'package:reforco_app/resource/app_strings.dart';
 
-// import 'package:comunicacao_hsl/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -44,17 +43,6 @@ class _SearchState extends State<Search> {
       ),
     );
   }
-
-  // Widget _createBanner(double width, double height) {
-  //   return Container(
-  //       width: width,
-  //       height: height,
-  //       child: Center(
-  //         child: Image.asset(
-  //           AppStrings.images.logo,
-  //         ),
-  //       ));
-  // }
 
   Widget _createBody(double width, double height, context) {
     return Container(
@@ -105,18 +93,7 @@ class _SearchState extends State<Search> {
   Widget sendButton(context) {
     return TextButton(
         onPressed: () {
-          //String registration = registrationController.value.text;
-          //if (registration.length == 8 && registration.isNotEmpty) {
-          // loginController.login(registration, (bool success) {
-          //if (success) {
-          //  Navigator.of(context).popAndPushNamed(Routes.home);
-          // } else {
-          //  onIncorrect(context);
-          // }
-          // });
-          // } else {
-          //badInput(context);
-          //}
+
         },
         child: Text(
           AppStrings.connect,
@@ -134,18 +111,7 @@ class _SearchState extends State<Search> {
   Widget registerButton(context) {
     return TextButton(
         onPressed: () {
-          //String registration = registrationController.value.text;
-          //if (registration.length == 8 && registration.isNotEmpty) {
-          // loginController.login(registration, (bool success) {
-          //if (success) {
-          //  Navigator.of(context).popAndPushNamed(Routes.home);
-          // } else {
-          //  onIncorrect(context);
-          // }
-          // });
-          // } else {
-          //badInput(context);
-          //}
+
         },
         child: Text(
           AppStrings.register,
@@ -159,31 +125,4 @@ class _SearchState extends State<Search> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
         ));
   }
-
-  // void onIncorrect(context) {
-  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //     duration: Duration(seconds: 1),
-  //     backgroundColor: AppColors.redError,
-  //     behavior: SnackBarBehavior.floating,
-  //     margin: EdgeInsets.all(30.0),
-  //     shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.all(Radius.circular(10))),
-  //     padding: EdgeInsets.all(16.0),
-  //     content: Text('Matrícula inválida',
-  //         textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
-  //   ));
-  // }
-
-  // void badInput(context) {
-  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //     backgroundColor: AppColors.redError,
-  //     behavior: SnackBarBehavior.floating,
-  //     margin: EdgeInsets.all(30.0),
-  //     shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.all(Radius.circular(10))),
-  //     padding: EdgeInsets.all(16.0),
-  //     content: Text('Devem ser 8 números',
-  //         textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
-  //   ));
-  // }
 }

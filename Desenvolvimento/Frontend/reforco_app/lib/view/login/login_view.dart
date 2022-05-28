@@ -1,6 +1,7 @@
 import 'package:reforco_app/components/glass.dart';
 import 'package:reforco_app/resource/app_strings.dart';
 import 'package:reforco_app/view/register/register_view.dart';
+import 'package:reforco_app/view/home/home_view.dart';
 
 // import 'package:comunicacao_hsl/router/routes.dart';
 import 'package:flutter/material.dart';
@@ -65,6 +66,7 @@ class _LoginState extends State<Login> {
               ),
               SizedBox(height: 16.0),
               TextField(
+                obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
                 maxLength: 45,
                 decoration: _customTextFieldDecoration(
@@ -95,26 +97,11 @@ class _LoginState extends State<Login> {
             const EdgeInsets.symmetric(vertical: 14, horizontal: 20));
   }
 
-  // Future<http.Response> fetchAlbum() {
-  //   return http.get(Uri.parse('http://'));
-  // }
-
   Widget sendButton(context) {
     return TextButton(
         onPressed: () {
-          //fetchAlbum()
-          //String registration = registrationController.value.text;
-          //if (registration.length == 8 && registration.isNotEmpty) {
-          // loginController.login(registration, (bool success) {
-          //if (success) {
-          //  Navigator.of(context).popAndPushNamed(Routes.home);
-          // } else {
-          //  onIncorrect(context);
-          // }
-          // });
-          // } else {
-          //badInput(context);
-          //}
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
+
         },
         child: Text(
           AppStrings.connect,
@@ -132,56 +119,21 @@ class _LoginState extends State<Login> {
   Widget registerButton(context) {
     return TextButton(
         onPressed: () {
-          //String registration = registrationController.value.text;
-          //if (registration.length == 8 && registration.isNotEmpty) {
-          // loginController.login(registration, (bool success) {
-          //if (success) {
+    
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => Register()));
-          // } else {
-          //  onIncorrect(context);
-          // }
-          // });
-          // } else {
-          //badInput(context);
-          //}
+
         },
         child: Text(
           AppStrings.register,
-          style: TextStyle(color: Colors.white, fontSize: 16),
+          style: TextStyle(color: Colors.green, fontSize: 16),
         ),
         style: TextButton.styleFrom(
           minimumSize: Size(200, 48),
           padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.white,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+
         ));
   }
-
-  // void onIncorrect(context) {
-  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //     duration: Duration(seconds: 1),
-  //     backgroundColor: AppColors.redError,
-  //     behavior: SnackBarBehavior.floating,
-  //     margin: EdgeInsets.all(30.0),
-  //     shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.all(Radius.circular(10))),
-  //     padding: EdgeInsets.all(16.0),
-  //     content: Text('Matrícula inválida',
-  //         textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
-  //   ));
-  // }
-
-  // void badInput(context) {
-  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //     backgroundColor: AppColors.redError,
-  //     behavior: SnackBarBehavior.floating,
-  //     margin: EdgeInsets.all(30.0),
-  //     shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.all(Radius.circular(10))),
-  //     padding: EdgeInsets.all(16.0),
-  //     content: Text('Devem ser 8 números',
-  //         textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
-  //   ));
-  // }
 }
