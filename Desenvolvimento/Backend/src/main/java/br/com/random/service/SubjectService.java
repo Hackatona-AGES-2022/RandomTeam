@@ -12,6 +12,7 @@ import br.com.random.repository.SubjectRepository;
 
 @Service
 public class SubjectService {
+	
 	@Autowired
 	private SubjectRepository subjectRepository;
 	
@@ -30,4 +31,6 @@ public class SubjectService {
 	public List<Subject> findAll() {
 		return subjectRepository.findAll();
 	}
+	
+	
 }

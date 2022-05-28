@@ -11,29 +11,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.random.model.Subject;
-import br.com.random.service.SubjectService;
+import br.com.random.model.Lesson;
+import br.com.random.service.LessonService;
 
 @RestController
-@RequestMapping("/subject")
-public class SubjectController {
-	
+@RequestMapping("/lesson")
+public class LessonController {
 	@Autowired
-	private SubjectService service;
+	private LessonService service;
 	
 	@RequestMapping(method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Subject> findAll() {
+	public List<Lesson> findAll() {
 		return service.findAll();
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Optional<Subject> findById(@PathVariable("id") String id) {
+	public Optional<Lesson> findById(@PathVariable("id") String id) {
+		System.out.println("ID: " + id);
 		return service.findById(id);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Subject create(@RequestBody Subject subject) {
-		return service.create(subject);
+	public Lesson create(@RequestBody Lesson lesson) {
+		return service.create(lesson);
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)

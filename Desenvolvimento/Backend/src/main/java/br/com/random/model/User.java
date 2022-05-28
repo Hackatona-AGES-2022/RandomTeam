@@ -12,6 +12,19 @@ public class User {
 	private String name;
 	private String password;
 	private String institution;
+	private UserType type;
+	
+	
+
+	public User(String id, String email, String name, String password, String institution, int type) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.name = name;
+		this.password = password;
+		this.institution = institution;
+		this.type = UserType.values()[type];
+	}
 
 	public String getId() {
 		return id;
@@ -56,6 +69,14 @@ public class User {
 	@Override
 	public int hashCode() {
 		return Objects.hash(email, id, institution, name, password);
+	}
+	
+	public UserType getType() {
+		return type;
+	}
+
+	public void setType(UserType type) {
+		this.type = type;
 	}
 
 	@Override
