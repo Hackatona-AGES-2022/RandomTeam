@@ -1,54 +1,47 @@
 package br.com.random.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.random.model.User;
+import br.com.random.repository.UserRepository;
 
 @Service
 public class UserServices {
 	
-	private final AtomicLong counter = new AtomicLong();
+	@Autowired
+	private UserRepository userRepository;
 	
 	public User create(User user) {
-		return user;
+		return userRepository.insert(user);
 	}
 	
 	public User update(User user) {
-		return user;
+		user.setEmail(user.getEmail());
+		user.setInstitution(user.getInstitution());
+		user.setName(user.getName());
+		user.setPassword(user.getPassword());
+		return userRepository.save(user);
 	}	
 	
 	public void delete(String id) {
-		
+		userRepository.deleteById(id);
 	}
 	
 	public User findById(String id) {
-		User user = new User();
-		user.setId(counter.incrementAndGet());
-		user.setName("Leandro");
-		user.setEmail("Costa");
-		user.setInstitution("Julio de Castilhos");
-		return user;
+		Optional<User> user = userRepository.findById(id);
+		
+		if (user.isEmpty()) {
+			return null;
+		}
+		
+		return user.get();
 	}
 	
 	public List<User> findAll() {
-		List<User> users = new ArrayList<User>();
-		for (int i = 0; i < 8; i++) {
-			User user = mockUser(i);
-			users.add(user);			
-		}
-		return users;
-	}
-
-	private User mockUser(int i) {
-		User user = new User();
-		user.setId(counter.incrementAndGet());
-		user.setName("User name " + i);
-		user.setEmail("User email " + i);
-		user.setInstitution("User Institution " + i);
-		return user;
+		return userRepository.findAll();
 	}
 }
