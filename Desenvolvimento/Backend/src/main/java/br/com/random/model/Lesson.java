@@ -7,8 +7,8 @@ public class Lesson {
 	private String title;
 	private String description;
 	private String content;
-	private Subject subject;
-	private User author;
+	private String subject_id;
+	private String author_id;
 	
 	public String getId() {
 		return id;
@@ -18,8 +18,8 @@ public class Lesson {
 		this.id = id;
 	}
 	
-	public Subject getSubject() {
-		return subject;
+	public String getSubjectId() {
+		return subject_id;
 	}
 
 	public String getDescription() {
@@ -46,8 +46,8 @@ public class Lesson {
 		this.title = title;
 	}
 	
-	public User getAuthor() {
-		return author;
+	public String getAuthorId() {
+		return author_id;
 	}
 	
 	@Override

@@ -1,10 +1,16 @@
 package br.com.random.model;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 
 public class User {
+	
+	public static int STUDENT = 0;
+	public static int TUTOR = 1;
+	public static List<Integer> TYPES = Arrays.asList(STUDENT, TUTOR);
 	
 	@Id
 	private String id;
@@ -12,19 +18,7 @@ public class User {
 	private String name;
 	private String password;
 	private String institution;
-	private UserType type;
-	
-	
-
-	public User(String id, String email, String name, String password, String institution, int type) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.name = name;
-		this.password = password;
-		this.institution = institution;
-		this.type = UserType.values()[type];
-	}
+	private int type;
 
 	public String getId() {
 		return id;
@@ -65,18 +59,14 @@ public class User {
 	public void setInstitution(String institution) {
 		this.institution = institution;
 	}
+	
+	public int getType() {
+		return type;
+	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(email, id, institution, name, password);
-	}
-	
-	public UserType getType() {
-		return type;
-	}
-
-	public void setType(UserType type) {
-		this.type = type;
 	}
 
 	@Override
