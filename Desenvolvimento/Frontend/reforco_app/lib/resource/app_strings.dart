@@ -71,6 +71,7 @@ class _Button {
 class _Images {
   final String background = "assets/background_tela_login.png";
   final String logo = "assets/logo_app.png";
+  final String logo_register = "assets/logo_cadastro.png";
   // final String rightChevron = "assets/icons/right_chevron.png";
   // final String filter = "assets/icons/filter.png";
   // final String communicate = "assets/icons/indisponivel.png";
