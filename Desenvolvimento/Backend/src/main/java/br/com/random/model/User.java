@@ -1,5 +1,12 @@
 package br.com.random.model;
 
+<<<<<<< Updated upstream
+=======
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
+>>>>>>> Stashed changes
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -7,13 +14,25 @@ import java.util.Objects;
 
 @Document(collection = "users")
 public class User {
+<<<<<<< Updated upstream
+=======
+	
+	public static int STUDENT = 0;
+	public static int TUTOR = 1;
+	public static List<Integer> TYPES = Arrays.asList(STUDENT, TUTOR);
+	
+>>>>>>> Stashed changes
 	@Id
 	private long id;
 	private String email;
 	private String name;
 	private String password;
 	private String institution;
+<<<<<<< Updated upstream
 
+=======
+	private int type;
+>>>>>>> Stashed changes
 
 	public long getId() {
 		return id;
@@ -54,6 +73,13 @@ public class User {
 	public void setInstitution(String institution) {
 		this.institution = institution;
 	}
+<<<<<<< Updated upstream
+=======
+	
+	public int getType() {
+		return type;
+	}
+>>>>>>> Stashed changes
 
 	@Override
 	public int hashCode() {

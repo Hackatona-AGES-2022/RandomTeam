@@ -10,12 +10,23 @@ import br.com.random.model.User;
 import br.com.random.repository.UserRepository;
 
 @Service
-public class UserServices {
+public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
 	
 	public User create(User user) {
+		if (
+			user.getPassword().length() < 8
+			|| user.getEmail() == null
+			|| user.getName() == null
+			|| user.getPassword() == null
+			|| user.getInstitution() == null
+			|| !User.TYPES.contains(user.getType())
+		) {
+			return null;
+		}
+		
 		return userRepository.insert(user);
 	}
 	
