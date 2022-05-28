@@ -1,9 +1,12 @@
 import 'package:reforco_app/components/glass.dart';
 import 'package:reforco_app/resource/app_strings.dart';
+import 'package:reforco_app/view/register/register_view.dart';
 
 // import 'package:comunicacao_hsl/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
+
 
 //import 'login_controller.dart';
 
@@ -92,9 +95,14 @@ class _LoginState extends State<Login> {
             const EdgeInsets.symmetric(vertical: 14, horizontal: 20));
   }
 
+  // Future<http.Response> fetchAlbum() {
+  //   return http.get(Uri.parse('http://'));
+  // }
+
   Widget sendButton(context) {
     return TextButton(
         onPressed: () {
+          //fetchAlbum()
           //String registration = registrationController.value.text;
           //if (registration.length == 8 && registration.isNotEmpty) {
           // loginController.login(registration, (bool success) {
@@ -128,7 +136,7 @@ class _LoginState extends State<Login> {
           //if (registration.length == 8 && registration.isNotEmpty) {
           // loginController.login(registration, (bool success) {
           //if (success) {
-          //  Navigator.of(context).popAndPushNamed(Routes.home);
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Register()));
           // } else {
           //  onIncorrect(context);
           // }

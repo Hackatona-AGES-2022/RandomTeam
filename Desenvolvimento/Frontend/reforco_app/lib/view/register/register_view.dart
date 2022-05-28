@@ -13,6 +13,8 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  String dropdownValue = 'Tutor';
+  
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -38,7 +40,7 @@ class _RegisterState extends State<Register> {
   Widget _createBanner(double width, double height) {
     return Container(
         width: width,
-        height: height,
+        //height: (height*0.25),
         child: Center(
           child: Image.asset(
             AppStrings.images.logo_register,
@@ -48,7 +50,7 @@ class _RegisterState extends State<Register> {
 
   Widget _createBody(double width, double height, context) {
     return Container(
-        padding: const EdgeInsets.all(20),
+        //padding: const EdgeInsets.all(20),
         width: width,
         height: height,
         child: Center(
@@ -84,6 +86,52 @@ class _RegisterState extends State<Register> {
                     placeholder: 'Senha'), //Hide password
                 //controller: registrationController,
               ),
+              SizedBox(height: 16.0),
+              DecoratedBox(
+  decoration: BoxDecoration( 
+     color: Colors.white, //background color of dropdown button
+     border: Border.all(color: Colors.black38, width:3), //border of dropdown button
+     borderRadius: BorderRadius.circular(40), //border raiuds of dropdown button
+     boxShadow: <BoxShadow>[ //apply shadow on Dropdown button
+            BoxShadow(
+                color: Color.fromRGBO(0, 0, 0, 0.57), //shadow for button
+                blurRadius: 5) //blur radius of shadow
+          ]
+  ),
+  
+  child:Padding(
+    padding: EdgeInsets.only(left:30, right:30),
+     child:DropdownButton(
+      value: "0",
+      items: [ //add items in the dropdown 
+        DropdownMenuItem(
+          child: Text("Aluno"),
+          value: "0",
+        ), 
+        DropdownMenuItem(
+          child: Text("Tutor"),
+          value: "1"
+        ),
+      ],
+      onChanged: (value){ //get value when changed
+          print("You have selected $value");
+      },
+      icon: Padding( //Icon at tail, arrow bottom is default icon
+        padding: EdgeInsets.only(left:20),
+        child:Icon(Icons.arrow_circle_down_sharp)
+      ), 
+      iconEnabledColor: Colors.green, //Icon color
+      style: TextStyle(  //te
+         color: Color.fromARGB(255, 0, 0, 0), //Font color
+         fontSize: 20 //font size on dropdown button
+      ),
+      
+      dropdownColor: Color.fromARGB(255, 151, 151, 151), //dropdown background color
+      underline: Container(), //remove underline
+      isExpanded: true, //make true to make width 100%
+     )
+  )
+),
               SizedBox(height: 16.0),
               registerButton(context),
             ],
