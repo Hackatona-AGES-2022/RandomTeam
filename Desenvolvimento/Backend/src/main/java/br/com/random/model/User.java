@@ -1,25 +1,23 @@
 package br.com.random.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.util.Objects;
 
-@Document(collection = "users")
+import org.springframework.data.annotation.Id;
+
 public class User {
+	
 	@Id
-	private long id;
+	private String id;
 	private String email;
 	private String name;
 	private String password;
 	private String institution;
 
-
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
